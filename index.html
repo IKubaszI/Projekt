@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>
+        Technologie webowe w aplikacjach Internetu rzeczy
+oraz dowolny tekst <i>czyli miłego wieczoru</i>
+    </h1>
+    Jakub Szaraj
+    <section id="wykres">
+        <div>
+            Populacja na kontynentach
+            <canvas id="chart"></canvas>
+        </div>
+     </section>
+    
+<script>
+       const data = '<%- chart%>';
+
+const chartData = JSON.parse(data);
+
+const ctx = document.querySelector("#chart").getContext('2d');
+
+const configChart2 = {
+    type: 'line',
+    data: chartData,
+    options: {
+        scales: {
+            x: {
+                type: 'linear',
+                position: 'bottom'
+            },
+            y: {
+                type: 'linear',
+                position: 'left'
+            }
+        },
+        plugins: {
+            title: {
+                display: true,
+                text: 'Populacja na kontynentach'
+            }
+        }
+    }
+};
+
+new Chart(ctx, configChart2);
+</script>
+</body>
+</html>
